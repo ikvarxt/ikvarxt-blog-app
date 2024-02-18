@@ -1,6 +1,7 @@
 const http = require('http')
 const express = require('express')
 const mongoose = require('mongoose')
+const methodOverride = require('method-override')
 const logger = require('./modules/logger')
 const Article = require('./modules/article')
 const articleRouter = require('./routes/articles')
@@ -12,6 +13,8 @@ const server = http.createServer(app);
 
 app.use(logger);
 app.use(express.urlencoded({ extended: false }))
+// use method override to prefrom delete or put action through post potocol
+app.use(methodOverride('_method'))
 app.use('/articles', articleRouter)
 
 app.set('view engine', 'ejs')
