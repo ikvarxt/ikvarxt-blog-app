@@ -4,15 +4,11 @@
 </div>
 <div class="form-group">
   <label for="description">Description</label>
-  <textarea id="description" name="description" class="form-control">
-    <%= article.description %>
-  </textarea>
+  <textarea id="description" name="description" class="form-control"><%= article.description %></textarea>
 </div>
 <div class="form-group">
   <label for="markdown">Markdown</label>
-  <textarea id="markdown" name="markdown" class="form-control">
-    <%= article.markdown %>
-  </textarea>
+  <textarea required id="markdown" name="markdown" class="form-control"><%= article.markdown %></textarea>
 </div>
 <a href="/" class="btn btn-secondary">Cancel</a>
 <button type="submit" class="btn btn-primary">Save</button>

@@ -12,6 +12,13 @@
 <body>
     <div class="container">
         <h1 class="mb-4 mt-4"><%= article.title %></h1>
+        <div>
+          <%= article.createdAt.toLocaleDateString() %>
+        </div>
+        <a href="/" class="btn btn-secondary">All Articles</a>
+        <div>
+          <%= article.markdown %>
+        </div>
     </div>
 </body>
 
