@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 
 <head>
   <meta charset="UTF-8">
@@ -9,16 +9,13 @@
 </head>
 
 <body>
-  <div class="container">
-    <h1 class="mb-4 mt-4">
-      <%= article.title %>
-    </h1>
-    <div>
-      <%= article.createdAt.toLocaleDateString() %>
-    </div>
-    <a href="/" class="btn btn-secondary">All Articles</a>
-    <div>
-      <%- article.sanitizedHtml %>
+  <div class="m-4">
+    <h1 class="mb-4 mt-4"><%= article.title %></h1>
+    <div><%= article.createdAt.toLocaleDateString() %></div>
+    <a href="/" class="btn btn-secondary mt-2 mb-2">All Articles</a>
+    <div class="card mt-4">
+      <div class="card-body">
+        <%- article.sanitizedHtml %></div>
     </div>
   </div>
 </body>

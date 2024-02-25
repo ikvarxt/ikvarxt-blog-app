@@ -7,7 +7,7 @@ const Article = require('./modules/article')
 const articleRouter = require('./routes/articles')
 const searchRouter = require('./routes/search')
 
-mongoose.connect('mongodb://localhost:27017/ikvarxt-blog', {})
+mongoose.connect('mongodb://localhost:27017/ikvarxt-blog')
 
 const app = express();
 const server = http.createServer(app);
