@@ -14,26 +14,23 @@
 
     <a href="../" class="btn btn-success mb-4">All Articles</a>
 
-    <form action="/search" method="POST">
-      <input required type="text" id="query" name="query"
-      class="form-control" placeholder="full text search..." value="<%= locals.search || "" %>">
-      <button type="submit" class="btn btn-primary">Search</button>
+    <form action="/search" method="post" class="row g-2">
+      <div class="col-auto">
+        <input required type="text" id="query" name="query" class="form-control" placeholder="full text search..." value="<%= locals.search || "" %>">
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
     </form>
 
     <% if (articles.length == 0 && locals.search) { %>
-      <h4 class="mt-8">No Search Result</h4>
+    <h4 class="mt-4">No Result.</h4>
     <% } %>
 
     <% articles.forEach(article => { %>
     <div class="card mt-4">
       <div class="card-body">
-        <h4 class="card-title"><%= article.title %></h4>
-
-        <div class="card-subtitle text-muted mb-2">
-          <%= article.createdAt.toLocaleDateString() %>
-        </div>
-
-        <div class="card-text mb-2"><%= article.description %></div>
+        <%- include("../_blog_card", { article: article }) %>
 
         <a href="../articles/<%= article.slug %>" class="btn btn-primary">Read More</a>
       </div>
