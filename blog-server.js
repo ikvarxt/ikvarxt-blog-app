@@ -5,6 +5,7 @@ const methodOverride = require('method-override')
 const logger = require('./modules/logger')
 const Article = require('./modules/article')
 const articleRouter = require('./routes/articles')
+const searchRouter = require('./routes/search')
 
 mongoose.connect('mongodb://localhost:27017/ikvarxt-blog', {})
 
@@ -15,11 +16,12 @@ app.use(logger);
 app.use(express.urlencoded({ extended: false }))
 // use method override to prefrom delete or put action through post potocol
 app.use(methodOverride('_method'))
+app.use('/public', express.static('public'))
 app.use('/articles', articleRouter)
+app.use('/search', searchRouter)
 
 app.set('view engine', 'ejs')
 
-// define the routes
 app.get('/', async (req, res) => {
   const articles = await Article.find().sort({ createdAt: 'desc'})
   res.render('articles/', { articles: articles })

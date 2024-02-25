@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/public/bootstrap.css" rel="stylesheet">
+  <title>ikvarxt's blog</title>
+</head>
+
+<body>
+  <div class="container m-4">
+    <h1 class="mb-4">Search Articles</h1>
+
+    <a href="../" class="btn btn-success mb-4">All Articles</a>
+
+    <form action="/search" method="POST">
+      <input required type="text" id="query" name="query"
+      class="form-control" placeholder="full text search..." value="<%= locals.search || "" %>">
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <% if (articles.length == 0 && locals.search) { %>
+      <h4 class="mt-8">No Search Result</h4>
+    <% } %>
+
+    <% articles.forEach(article => { %>
+    <div class="card mt-4">
+      <div class="card-body">
+        <h4 class="card-title"><%= article.title %></h4>
+
+        <div class="card-subtitle text-muted mb-2">
+          <%= article.createdAt.toLocaleDateString() %>
+        </div>
+
+        <div class="card-text mb-2"><%= article.description %></div>
+
+        <a href="../articles/<%= article.slug %>" class="btn btn-primary">Read More</a>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+</body>
+
+</html>

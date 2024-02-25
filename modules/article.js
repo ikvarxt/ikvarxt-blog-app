@@ -32,6 +32,8 @@ const articleSchema = new mongoose.Schema({
   }
 })
 
+articleSchema.index({title: 'text', description: 'text', markdown: 'text'})
+
 articleSchema.pre('validate', function (next) {
   if (this.title) {
     this.slug = slugify(this.title, { lower: true, strict: true })
